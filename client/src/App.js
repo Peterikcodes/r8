@@ -12,6 +12,33 @@ const iconStyles = {
   width: "20px",
 };
 
+const NavLink = ({ l }) => {
+  return (
+    <p className="navLink">
+      {l.name}
+      {l.iconType === "mui" && (
+        <SvgIcon
+          className="linkIcon"
+          component={l.icon}
+          style={{ ...iconStyles, color: "#9e35f7" }}
+        />
+      )}
+      {l.iconType === "svg" && (
+        <img
+          className="linkIcon"
+          src={l.icon}
+          alt=""
+          style={{
+            ...iconStyles,
+            filter:
+              "invert(50%) sepia(94%) saturate(6167%) hue-rotate(259deg) brightness(94%) contrast(105%)",
+          }}
+        />
+      )}
+    </p>
+  );
+};
+
 const App = () => {
   const videoRef = useRef();
   const [visible, setVisible] = useState(true);
@@ -28,6 +55,7 @@ const App = () => {
       clearInterval(interval);
     };
   }, [time]);
+
   return (
     <div className="app">
       <div className="bgContainer">
@@ -57,7 +85,7 @@ const App = () => {
         <Fade bottom cascade distance="400%" delay={800}>
           <ul className="nav">
             {navLinks.map((l, i) => {
-              return (
+              return l.type === "normal" ? (
                 <a
                   className={`navLinkContainer ${l.name}`}
                   key={i}
@@ -65,29 +93,21 @@ const App = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <p className="navLink">
-                    {l.name}
-                    {l.iconType === "mui" && (
-                      <SvgIcon
-                        className="linkIcon"
-                        component={l.icon}
-                        style={{ ...iconStyles, color: "#9e35f7" }}
-                      />
-                    )}
-                    {l.iconType === "svg" && (
-                      <img
-                        className="linkIcon"
-                        src={l.icon}
-                        alt=""
-                        style={{
-                          ...iconStyles,
-                          filter:
-                            "invert(50%) sepia(94%) saturate(6167%) hue-rotate(259deg) brightness(94%) contrast(105%)",
-                        }}
-                      />
-                    )}
-                  </p>
+                  <NavLink l={l} />
                 </a>
+              ) : (
+                <button
+                  key={i}
+                  style={{
+                    cursor: "pointer",
+                  }}
+                  className={`navLinkContainer ${l.name}`}
+                  data-sellix-pricing="637bd990abe99"
+                  type="submit"
+                  alt="Buy now with sellix.io"
+                >
+                  <NavLink l={l} />
+                </button>
               );
             })}
           </ul>
