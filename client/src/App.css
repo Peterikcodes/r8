@@ -119,10 +119,9 @@ a {
 .navLinkContainer.purchase > .navLink {
   font-size: min(max(2vh, 15px), 30px);
   font-weight: bold;
-  background: -webkit-linear-gradient(#ffcaff, #c396ff);
+  background: -webkit-linear-gradient(#ffcaff, #9a4eff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  line-height: 0.7;
 }
 
 .navLinkContainer:hover > .navLink {

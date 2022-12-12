@@ -102,7 +102,7 @@ const App = () => {
                     cursor: "pointer",
                   }}
                   className={`navLinkContainer ${l.name}`}
-                  data-sellix-pricing="637bd990abe99"
+                  data-sellix-product="637bd990abe99"
                   type="submit"
                   alt="Buy now with sellix.io"
                 >
